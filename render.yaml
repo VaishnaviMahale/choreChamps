@@ -1,9 +1,14 @@
-# Render Deployment Configuration
-# This file helps Render detect and configure your Node.js service
-
-# Build Command
-build: cd server && npm install
-
-# Start Command
-start: cd server && npm start
-
+services:
+  - type: web
+    name: chorechamps-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    rootDir: server
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
